@@ -13,23 +13,20 @@ class AdsController extends Controller
 {
     public function indexAd(Request $request)
     {  
-        $users = DB::table('users')->get();  
-        // dd($users)  ;        
-        $id = Auth::user()->id;       
-        // $ads = Ad::where('user_id',$id)->orderBy('id','Desc')->paginate(5);
+        $users = DB::table('users')->get();              
+        $id = Auth::user()->id;        
         $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(5);
-
         $comms=comment::all();
-
-        $unames=User::all();
-
-       
-        
-       
-        
-        
-        // return view('Ad.pageAd')->with(['ads' => $ads])->with(['comms' => $comms])->with(['unames' => $unames]);
+        $unames=User::all(); 
         return view('Ad.pageAd',compact('ads','comms','users'));
+    }
+
+    public function myListAd(Request $request){                      
+        $id = Auth::user()->id;        
+        $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(10);
+        $count=DB::table('Ads')->orderBy('id','Desc')->count();
+        return view('Ad.myListAd',compact('ads','count'));
+
     }
 
    public function createAd()
@@ -39,17 +36,13 @@ class AdsController extends Controller
 
    public function storeAd(Request $request)
     {
-
-        $newImageName =time() . '-' . $request->name . '.' . $request->image_url->extension();
-        // $request->image_url->extension();
+        $newImageName =time() . '-' . $request->name . '.' . $request->image_url->extension();        
         $request->image_url->move(public_path('images'),$newImageName);
-
 
         $user = Auth::user()->id;
         $category = Auth::user()->id;
         
         $ad=new Ad([
-
             'user_id'=>$user,
             'category_id'=>$category,
             'title'=> $request->get('title'),
@@ -61,8 +54,7 @@ class AdsController extends Controller
         ]);
         
         
-         if ($ad->save()) {
-             
+         if ($ad->save()) {            
             return redirect(route('indexAd'));          
         }
         // return; //422
@@ -76,7 +68,7 @@ class AdsController extends Controller
     public function showAd(Ad $id)
     {         
         $users = Auth::user()->name;             
-        return view('Ad.showAd');   
+        return view('Ad.showAd')->with(['id'=>$id]);   
     }
 
     public function editAd(Ad $id)
