@@ -18,7 +18,7 @@ class comment extends Model
     ];
     public function Ad()
     {
-        return $this->belongsTo(Ad::class);
+        return $this->belongsTo(Ad::class,'Ads_id','id');
     }
     public function User()
     {
