@@ -28,6 +28,7 @@ a {
 .fontlg {
    font-size: 17.8pt;
 }
+/***************pageAd***************/
 .body{
    margin: 0;
    background: #e4e1e1;
@@ -88,8 +89,7 @@ a {
    margin-top: 2px; 
    border:1px solid rgba(219, 219, 219, 0.932);
    padding-right: 10px;
-   color:#8C9C98 ;
-   
+   color:#8C9C98 ;   
 }
 #search_pic{
    width: 41px;
@@ -107,13 +107,11 @@ a {
   border-top: 1px solid  #cccccc;
   box-shadow: 0 2px 13px #aaa;
 }
-#main{
-   
+#main{   
    width: 1200px;
    height: auto;
    margin: 17px auto;    
    background-color:#e4dcdc;
-
 }
 #create{
    width:100%;
@@ -226,11 +224,6 @@ a {
 #comm_button_a{
    text-decoration: none;  
 }
-   
-
-
-
-
 #number{
    width: auto;
    height:auto;
@@ -249,4 +242,71 @@ a {
    width: 100%;
    height:220px;
    background-color:hsla(239, 93%, 48%, 0.871);
+}
+/* ********************end PageAd**************************** */
+/* *************************createAd***************************** */
+#create_main{
+   width: 711px;
+   height:710px;
+   border:solid 1px black;
+   margin-right:340px;
+   cursor:pointer;
+   background-color:seashell;
+}
+#create_form{
+   width: 515px;
+   height:550px;
+   margin-right:85px;
+   margin-top: 25px;
+}
+.label_ad{
+   margin-right:52px;
+   font-family: Byekan;
+   font-size: 18px;
+   margin-top: 17px;
+   display: inline-block;
+}
+.input_Ad{
+   width: 430px;
+   margin-right:52px;
+   font-size: 16px;
+}
+#label_description{
+   margin-right:52px;
+   font-family: Byekan;
+   font-size: 18px;
+   margin-top: 17px;
+   display: inline-block;
+}
+#textarea_description{
+   width: 430px;
+   height:160px;
+   margin-right:52px;
+   resize: none;
+   font-size: 17px;
+   font-family: Byekan;
+}
+#label_img{
+   margin-right:52px;
+   font-family: Byekan;
+   font-size: 18px;
+   margin-top: 18px;
+   display: inline-block
+}
+#input_img{
+   margin-right:52px;
+   font-family: Byekan;
+   margin-top: 18px;
+   display: inline-block;
+   font-size: 18px;
+}
+#input_submit{
+   margin-top: 48px;
+   background-color:rgba(11,194,240,0.932);
+   border-radius:20%;
+   width:100px;
+   height: 40px;
+   margin-right:223px;
+   font-family: Byekan;
+   font-size: 18px;
 }
