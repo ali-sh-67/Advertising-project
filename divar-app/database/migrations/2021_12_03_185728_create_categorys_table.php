@@ -17,11 +17,12 @@ class CreateCategorysTable extends Migration
     {
         Schema::create('categorys', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger("user_id")->unsigned();
             $table->string('name');
             $table->string('name_en')->nullable();
-            $table->bigInteger('parent_id')->default(0);
-            $table->bigInteger('user_id');
-            $table->string('icon')->default('fa fa-circle-o-notch');
+            $table->bigInteger('parent_id')->default(0);            
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('icon')->default(public_path('images/icon/default/categorys_image.png'));
             $table->timestamps();
         });
     }
