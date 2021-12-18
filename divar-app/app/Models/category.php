@@ -14,10 +14,11 @@ class category extends Model
     protected $table = 'categorys';//this rename table for change migration name
     protected $fillable = [
         'id',
+        'user_id',
         'name',
         'name_en',
         'parent_id',
-        'user_id',
+        'icon',        
         'created_at',
         'updated_at',
     ];
@@ -25,7 +26,7 @@ class category extends Model
 
     public function Ad()
     {
-        return $this->hasMany(Ad::class);
+        return $this->hasMany(Ad::class,'category_id','id');
     }
 
 
