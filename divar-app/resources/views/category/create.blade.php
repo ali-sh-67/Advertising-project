@@ -2,37 +2,59 @@
 
 @section('content')
     <link rel="stylesheet" href="{{asset('css\category\create.css')}}">
-    <div>
+    <div id="cat_main">
         @foreach($errors->all() as $error)
             {{$error}}
         @endforeach
 
-        <form method="post" action="{{route('category.store')}}">
-            @csrf
+        <div id="cat_form">
 
-            <div>
-                <div><label>'Category name'</label></div>
-                <div><input type="text" name="name" placeholder="نام را وارد کنید"></div>
-            </div>
-            <div>
-                <div><label>'Category name_en'</label></div>
-                <div><input type="text" name="name_en" placeholder="نام انگلیسی را وارد کنید"></div>
-            </div>
-            <div>
-                <div><label>'font_icon'</label></div>
-                <div><input type="text" name="icon" value="fa fa-circle-o-notch" placeholder="فونت آیکون را وارد کنید"></div>
-                <div>
-
-                    <select name="parent_id">
-                        <option value="0">دسته اصلی</option>
-                        @foreach($categories as $category)
-                        <option  value="{{$category->id}}" >{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
+            <form  method="post" action="{{route('category.store')}}">
+                @csrf
 
                 <div>
-                    <div><input type="submit" value="ایجاد"></div>
+                    <div>
+                        <label class="cat_label">نام دسته بندی:</label>
+                    </div>
+                    <div>
+                        <input  class="cat_input" type="text" name="name" placeholder="نام را وارد کنید">
+                    </div>
                 </div>
-        </form>
+                <div>
+                    <div>
+                        <label class="cat_label">نام دسته بندی به انگلیسی:</label>
+                    </div>
+                    <div>
+                        <input class="cat_input" type="text" name="name_en" placeholder="نام انگلیسی را وارد کنید">
+                    </div>
+                </div>
+                <div>
+                    <div>
+
+
+
+                        <label class="cat_label">آیکن:</label>
+                        <input class="cat_input" type="text" name="icon" value="fa fa-circle-o-notch" placeholder="فونت آیکون را وارد کنید">
+
+                    
+                        
+                    </div>
+                   
+                    <div>
+                        <select id="cat_select" name="parent_id">
+                            <option value="0">دسته اصلی</option>
+                            @foreach($categories as $category)
+                            <option  value="{{$category->id}}" >{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <div>
+                            <input type="submit" value="ایجاد">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
 @endsection
