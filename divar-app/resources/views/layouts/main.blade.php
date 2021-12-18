@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
 
 </head>
-<body dir="rtl" style="text-align:right">
+<body dir="rtl" style="text-align:right;margin:0;padding:0;background:seashell;">
 
 @yield('content')
 </body>
