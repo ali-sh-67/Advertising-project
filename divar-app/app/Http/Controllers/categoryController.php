@@ -44,12 +44,18 @@ class categoryController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        
+       
 
         $category = new Category;
         $category->name = $request->name;
         $category->name_en = $request->name_en;
         $category->parent_id = $request->parent_id;
+
         $category->icon = $request->icon;
+
+        // $category->icon = $request->icon;
+
         $category->user_id = Auth::user()->id;
         if ($category->save()) {
             $categories = category::root()->get();
