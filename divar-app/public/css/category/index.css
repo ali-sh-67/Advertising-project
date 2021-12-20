@@ -1,36 +1,38 @@
 .categories_list {
-    width: 100%;
+    width: 20%;
     background-color:#dbdbdb;
 
 }
 /*.categories_list a {*/
 /*color: #565e64;*/
 /*}*/
-div .name{
+div .category{
     margin-right: 30px;
+    font-size: 12px;
+    padding-top: 15px;
 }
 div .child{
     margin-right: 50px;
+    font-size: 10px;
 }
 div .subchild{
     margin-right: 100px;
+    font-size: 10px;
 }
 div .sub1child{
      margin-right: 150px;
- }
+    font-size: 10px;
+}
 div .sub2child{
     margin-right: 200px;
+    font-size: 10px;
 }
-.category{
-    font-size: 25px;
-    margin-top: 15px;
-}
+/*.category{*/
+/*    font-size: 12px;*/
+/*    padding-top: 15px;*/
+/*}*/
 .category div{
     display: inline;
-}
-.child{
-    font-size: 20px;
-
 }
 .child div{
     display: inline;
@@ -49,18 +51,18 @@ div .sub2child{
 }
 .create a{
     color: dodgerblue;
-    font-size: 20px;
-    margin-right: 30px;
+    font-size: 6px;
+    /*margin-right: 30px;*/
 }
 .edit a{
     color: green;
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 6px;
+    /*margin-right: 20px;*/
 }
 .delete a{
     color: darkred;
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 6px;
+    /*margin-right: 20px;*/
 }
 a:link{
     text-decoration: none;
