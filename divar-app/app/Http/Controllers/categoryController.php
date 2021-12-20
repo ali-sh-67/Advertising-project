@@ -13,11 +13,7 @@ use App\Http\Requests\updateRequest;
 
 class categoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $categories = category::root()->get();
@@ -25,37 +21,23 @@ class categoryController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function create(Request $request)
     {
         $categories = category::all();
         return view('category.create')->with(['categories' => $categories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(StoreRequest $request)
     {
-        
-       
 
         $category = new Category;
         $category->name = $request->name;
         $category->name_en = $request->name_en;
         $category->parent_id = $request->parent_id;
-
         $category->icon = $request->icon;
-
-        // $category->icon = $request->icon;
-
         $category->user_id = Auth::user()->id;
         if ($category->save()) {
             $categories = category::root()->get();
@@ -67,37 +49,20 @@ class categoryController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function show($id)
-//    {
-//        return 'show_category';
-//    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request, $id)
     {
+        $name_parent_id = category::find($id)->parent_id;
+        if ($name_parent_id == 0) {
+            $name_parent_id=category::find($id);
+        }else {
+            $name_parent_id = category::find($name_parent_id);
+        }
         $category = category::find($id);
         $categories=category::all();
-        return view('category.edit',compact('categories', 'category'));
+        return view('category.edit',compact('categories', 'category','name_parent_id'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function update (StoreRequest $request, $id)
 
@@ -112,6 +77,7 @@ class categoryController extends Controller
         if ($category->id != $request->parent_id) {
             $category->name = $request->name;
             $category->parent_id = $request->parent_id;
+            $category->icon = $request->icon;
             if ($category->save()) {
 
                 $categories = category::root()->get();
@@ -125,12 +91,6 @@ class categoryController extends Controller
         return; // 401
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $destroy_category = category::where('user_id', Auth::user()->id)->where('id', $id)->first();
