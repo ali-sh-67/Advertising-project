@@ -67,8 +67,9 @@ class categoryController extends Controller
     public function update (Request $request, $id)
 
     {
-
-        $category = category::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $category = category::find($id);
+//        $category = category::where('user_id', Auth::user()->id)->where('id', $id)->first();
+//        return $category;
         $request->validate([
             'parent_id' => 'bail|regex:(^[0-9]*$)|nullable|not_in:' . $category->id
 
