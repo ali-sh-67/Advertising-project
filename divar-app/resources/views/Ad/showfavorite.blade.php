@@ -7,6 +7,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="body">
@@ -42,28 +43,27 @@
 
 
 
-    @foreach($ads as $ad)
-        @json($ad->pivot)
+    @foreach($favs as $fav)
         <div id="create">
             <div id="advert">
-                <span id="nameAdvert">کد آگهی: {{$ad->id}} </span>
+                <span id="nameAdvert">کد آگهی: {{$fav->id}} </span>
             </div>
 
             <div id="img">
-                <img id="showImg" src="{{asset('images/' .$ad->image_url)}}">
+                <img id="showImg" src="{{asset('images/' .$fav->image_url)}}">
             </div>
 
             <div id="title">
-                <span>عنوان: {{$ad->title}}</span>
+                <span>عنوان: {{$fav->title}}</span>
             </div>
             <div id="description">
-                <span>توضیحات: {{$ad->description}}</span>
+                <span>توضیحات: {{$fav->description}}</span>
             </div>
             <div id="price">
-                <span>قیمت:{{$ad->price }} </span>
+                <span>قیمت:{{$fav->price }} </span>
             </div>
             <div id="Address">
-                <span>آدرس: {{$ad->address }}</span>
+                <span>آدرس: {{$fav->address }}</span>
             </div>
 
 
@@ -77,24 +77,24 @@
 
         </span>
 
-                <div>
-                    @if (empty($ad->pivot))
+                <div id="com_div">
+                    @if (empty($fav->pivot))
                     <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                         @csrf
                         <input type="hidden" name="favorite" value="favorite" />
-                        <a onclick="this.parentNode.submit();">favorite</a>
+                        <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red"></i></a>
                     </form>
                     @endif
-                        @if (!empty($ad->pivot))
-                    <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
+                        @if (!empty($fav->pivot))
+                    <form method="post" action="{{route('favoriteAd',['id'=>$fav->id])}}">
                         @csrf
                         <input type="hidden" name="favorite" value="favorite" />
-                        <a onclick="this.parentNode.submit();">unfavorite</a>
+                        <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark" style="font-size:48px;color:red"></i></a>
                     </form>
                     @endif
                 </div>
                 <div id="com_div">
-                    <a href="{{route('createComment',$ad->id)}}" class="button"><span>کامنت بگذار!</span></a>
+                    <a href="{{route('createComment',$fav->id)}}" class="button"><span>کامنت بگذار!</span></a>
                 </div>
             </div>
 

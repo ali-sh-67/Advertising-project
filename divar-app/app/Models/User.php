@@ -11,11 +11,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
         'id',
         'name',
@@ -34,25 +29,22 @@ class User extends Authenticatable
     public function Ad(){
         return $this->hasMany(Ad::class);
     }
+    
     public function category(){
         return $this->hasMany(caregory::class,'user_id','id');
     }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
+    public function ads()
+    {
+        return $this->belongsToMany(ad::class,'User_ad')->withPivot('favorite');
+    }
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
+   
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
