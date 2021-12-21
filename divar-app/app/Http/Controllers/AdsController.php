@@ -87,5 +87,25 @@ class AdsController extends Controller
          return redirect(route('indexAd'));   
     }   
     
+    public function favoriteAd (Request $request, $id){
+        $user=User::find(Auth::user()->id);
+    //    $user->ads()->attach($ad,['favorite'=>'favorite']);
+            $user->ads()->toggle([$id=>['favorite'=> 'favorite']]);
+    //    $user->ads()->updateExistingPivot($id,['favorite'=> 'favorite']);
+    
+        $fav=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
+        $ads=ad::all();
+    return view('Ad.pageAd',compact('fav','ads'));
+    }
+    
+        public function showfavoriteAd (Request $request){
+            $user=User::find(Auth::user()->id);
+    //        $ad=ad::find($id)->id;
+    //        $user->ads()->detach($ad,['favorite'=>'favorite']);
+    //        $user->ads()->updateExistingPivot($id,['favorite'=> 'not']);
+    
+            $ads=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
+            return view('Ad.showfavorite',['ads' => $ads]);
+        }
 
 }

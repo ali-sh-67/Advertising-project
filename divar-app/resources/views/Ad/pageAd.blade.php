@@ -27,6 +27,13 @@
                 <div id="search_top">                    
                   <input class="yekan input" type="text" placeholder="محصول ، دسته یا برند مورد نظر خود را جستجو کنید ... "/>
                   <span id="search_pic"></span>
+                  {{--                    @if (!empty($ad->favorite == 'favorite'))--}}
+                    <form method="get" action="{{route('showfavoriteAd')}}">
+                        @csrf
+                        <input type="hidden" name="favorite" value="not"/>
+                        <a onclick="this.parentNode.submit();">showfavorite</a>
+                    </form>
+                    {{--                    @endif--}}
                 </div>
 
 
@@ -39,6 +46,9 @@
 </header>
 <nav id="nav" ></nav>
 <div id="main">
+@if(!empty($fav))
+        @json($fav)
+    @endif
 
   
 @foreach($ads as $ad)
@@ -94,6 +104,16 @@
               @endif
             @endforeach
         </div> 
+        <div>
+                {{--                    @if (!empty($ad->pivot))--}}
+                <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
+                    @csrf
+                    <input type="hidden" name="favorite" value="favorite"/>
+                    <a onclick="this.parentNode.submit();">favorite</a>
+                </form>
+                {{--                    @endif--}}
+
+            </div>
        
         <button id="comm_button" > 
           <a id="comm_button_a" href="{{route('createComment',$ad->id)}}" >کامنت بگذار!</a>
