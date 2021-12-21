@@ -17,8 +17,9 @@ class AdsController extends Controller
         $id = Auth::user()->id;        
         $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(5);
         $comms=comment::all();
-        $unames=User::all(); 
-        return view('Ad.pageAd',compact('ads','comms','users'));
+        $unames=User::all();
+        $favs=User::find(Auth::user()->id)->ads()->get();
+        return view('Ad.pageAd',compact('ads','comms','users','favs'));
     }
 
     public function myListAd(Request $request){                      
@@ -92,20 +93,21 @@ class AdsController extends Controller
     //    $user->ads()->attach($ad,['favorite'=>'favorite']);
             $user->ads()->toggle([$id=>['favorite'=> 'favorite']]);
     //    $user->ads()->updateExistingPivot($id,['favorite'=> 'favorite']);
-    
-        $fav=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
-        $ads=ad::all();
-    return view('Ad.pageAd',compact('fav','ads'));
+        $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(5);
+        $comms=comment::all();
+        // $fav=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
+        $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
+    return view('Ad.pageAd',compact('favs','ads','comms'));
     }
     
         public function showfavoriteAd (Request $request){
-            $user=User::find(Auth::user()->id);
+            // $user=User::find(Auth::user()->id);
     //        $ad=ad::find($id)->id;
     //        $user->ads()->detach($ad,['favorite'=>'favorite']);
     //        $user->ads()->updateExistingPivot($id,['favorite'=> 'not']);
     
-            $ads=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
-            return view('Ad.showfavorite',['ads' => $ads]);
+            $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
+            return view('Ad.showfavorite',['favs' => $favs]);
         }
 
 }

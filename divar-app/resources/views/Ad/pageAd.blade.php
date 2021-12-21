@@ -7,6 +7,7 @@
 <script src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="body" >
@@ -46,9 +47,7 @@
 </header>
 <nav id="nav" ></nav>
 <div id="main">
-@if(!empty($fav))
-        @json($fav)
-    @endif
+  
 
   
 @foreach($ads as $ad)
@@ -74,7 +73,7 @@
       <div id="Address" >
         <span >آدرس: {{$ad->address }}</span>
       </div>
-     
+      
 
       <div id="comment"  >
         <span id="comm_span">کامنت:</span>
@@ -103,18 +102,40 @@
                 <br>
               @endif
             @endforeach
-        </div> 
-        <div>
-                {{--                    @if (!empty($ad->pivot))--}}
-                <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
-                    @csrf
-                    <input type="hidden" name="favorite" value="favorite"/>
-                    <a onclick="this.parentNode.submit();">favorite</a>
-                </form>
-                {{--                    @endif--}}
-
-            </div>
-       
+          </div> 
+        </div>
+        <div id="favorite">
+          {{--                    @if (!empty($ad->pivot))--}}
+          {{-- <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
+              @csrf
+              <input type="hidden" name="favorite" value="favorite"/>
+              <a onclick="this.parentNode.submit();">favorite</a>
+          </form> --}}
+          {{--                    @endif--}}
+          {{-- <div> --}}
+            {{-- @if (isset($favs)) --}}
+            
+            {{-- @json($fav->pivot->favorite) --}}
+            {{-- @if (empty($fav->pivot->favorite)) --}}
+            
+            <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
+                @csrf
+                <input type="hidden" name="favorite" value="favorite" />
+                <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red"></i></a>
+            </form>
+            {{-- @foreach ($favs as $fav) --}}
+            {{-- @endif --}}
+            {{-- @if (($favs))
+                @json($favs)
+            <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
+                @csrf
+                <input type="hidden" name="favorite" value="favorite" />
+                <a onclick="this.parentNode.submit();">unfavorite</a>
+            </form>
+            @endif --}}
+            {{-- @endforeach --}}
+        </div>
+  
         <button id="comm_button" > 
           <a id="comm_button_a" href="{{route('createComment',$ad->id)}}" >کامنت بگذار!</a>
         </button>         
