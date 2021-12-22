@@ -39,7 +39,7 @@ Route::post('/Ad/updateAd/{id}',[AdsController::class, 'updateAd'])->name('updat
 Route::post('/Ad/favoriteAd/{id}',[AdsController::class, 'favoriteAd'])->name('favoriteAd')->middleware('auth');
 Route::get('/Ad/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name('showfavoriteAd')->middleware('auth');
 
-
+Route::get('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
 
 Route::get('/Comment/create/{id}',[commentController::class, 'createComment'])->name('createComment')->middleware('auth');
 Route::post('/Comment/store/{id}',[commentController::class, 'StoreComment'])->name('StoreComment');
@@ -54,6 +54,5 @@ Route::middleware(['auth'])->prefix('/category')->group( function () {
     Route::post('/update/{id}', [categoryController::class, 'update'])->name('category.update');
     Route::post('/store', [categoryController::class, 'store'])->name('category.store');
     Route::get('/delete/{id}', [categoryController::class, 'destroy'])->name('category.delete');
-
 });
 Auth::routes();

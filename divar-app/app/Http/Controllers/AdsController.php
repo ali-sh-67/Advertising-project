@@ -32,7 +32,8 @@ class AdsController extends Controller
 
    public function createAd()
    {  
-       return view('Ad.createAd'); 
+    $categories = category::all();
+       return view('Ad.createAd')->with(['categories'=> $categories]); 
    }
 
    public function storeAd(Request $request)
@@ -41,11 +42,9 @@ class AdsController extends Controller
         $request->image_url->move(public_path('images'),$newImageName);
 
         $user = Auth::user()->id;
-        $category = Auth::user()->id;
-        
         $ad=new Ad([
             'user_id'=>$user,
-            'category_id'=>$category,
+            'category_id'=>$request->get('category_id'),
             'title'=> $request->get('title'),
             'description'=>$request->get('description'),
             'image_url'=>$newImageName,
@@ -110,4 +109,15 @@ class AdsController extends Controller
             return view('Ad.showfavorite',['favs' => $favs]);
         }
 
+        public function categoryAds(Request $request, $id){
+
+        $users = DB::table('users')->get();              
+        // $id = Auth::user()->id;        
+        $ads=DB::table('Ads')->where('category_id',$id)->orderBy('id','Desc')->paginate(5);
+        // return $ads;
+        $comms=comment::all();
+        // $unames=User::all();
+        $favs=User::find(Auth::user()->id)->ads()->get();
+        return view('Ad.pageAd',compact('ads','comms','users','favs'));
+        }
 }

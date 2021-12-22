@@ -10,5 +10,6 @@
 <body dir="rtl" style="text-align:right;margin:0;padding:0;background:seashell;">
 
 @yield('content')
+@yield('category_index')
 </body>
 </html>

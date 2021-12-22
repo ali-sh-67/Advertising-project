@@ -45,6 +45,11 @@
     </div>
   
 </header>
+<div class="sidebar">
+
+  @include('category.index')
+
+</div>
 <nav id="nav" ></nav>
 <div id="main">
   

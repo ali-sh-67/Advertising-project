@@ -21,7 +21,6 @@ class CreateCategorysTable extends Migration
             $table->string('name_en')->nullable();
             $table->bigInteger('parent_id')->default(0);
             $table->bigInteger('user_id');
-            $table->bigInteger('ad_id');
             $table->string('icon')->default('fa fa-circle-o-notch');
             $table->timestamps();
         });
