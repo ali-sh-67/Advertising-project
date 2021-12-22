@@ -1,5 +1,5 @@
-@extends('Ad.pageAd')
-@section('category_index')
+@extends('layouts.main')
+@section('content')
     <link rel="stylesheet" href="{{asset('css/category/index.css')}}">
     <div class="categories_list">
 
