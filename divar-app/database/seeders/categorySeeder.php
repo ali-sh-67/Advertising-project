@@ -23,7 +23,6 @@ class categorySeeder extends Seeder
             "name_en" => 'states',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 2,
@@ -31,7 +30,6 @@ class categorySeeder extends Seeder
             "name_en" => 'cars',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 3,
@@ -39,7 +37,6 @@ class categorySeeder extends Seeder
             "name_en" => 'digital goods',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 4,
@@ -47,7 +44,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 5,
@@ -55,7 +51,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 6,
@@ -63,7 +58,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 7,
@@ -71,7 +65,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 8,
@@ -79,7 +72,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 9,
@@ -87,7 +79,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 10,
@@ -95,7 +86,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 0,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 11,
@@ -103,7 +93,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 1,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 12,
@@ -111,7 +100,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 1,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 13,
@@ -119,7 +107,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 1,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 14,
@@ -127,7 +114,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 2,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 15,
@@ -135,7 +121,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 2,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 16,
@@ -143,7 +128,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 3,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ],[
             "id" => 17,
@@ -151,7 +135,6 @@ class categorySeeder extends Seeder
             "name_en" => '',
             "parent_id" => 3,
             "user_id" => 1,
-            "ad_id" => 1,
             "icon" => 'fa fa-circle-o-notch'
         ]
     ]);

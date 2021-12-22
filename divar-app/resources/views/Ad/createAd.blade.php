@@ -49,7 +49,16 @@
                     <div><label class="label_ad">تلفن:</label></div>
                     <div><input class="input_Ad" type="text" name="phone_number_ads" placeholder="شماره تلفن را وارد کنید"></div>
                
-             
+                    <div><label class="label_ad">انتشار در گروه:</label></div>
+                    <div>
+                        <select class="input_Ad" name="category_id">
+                            @foreach($categories as $category)
+                                @foreach($category->children as $child)
+                                    <option value="{{$child->id}}">{{$child->name}}</option>
+                                @endforeach
+                            @endforeach
+                        </select>
+                    </div>
                                        
                     <input id="input_submit"  type="submit" value="ارسال">
                
