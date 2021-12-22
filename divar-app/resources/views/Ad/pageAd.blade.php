@@ -24,8 +24,8 @@
             </div>
 
 
-            <div id="header_right_bottom" >                
-                <div id="search_top">                    
+            <div id="header_right_bottom" >
+                <div id="search_top">
                   <input class="yekan input" type="text" placeholder="محصول ، دسته یا برند مورد نظر خود را جستجو کنید ... "/>
                   <span id="search_pic"></span>
                   {{--                    @if (!empty($ad->favorite == 'favorite'))--}}
@@ -41,9 +41,9 @@
             </div>
 
         </div>
-       
+
     </div>
-  
+
 </header>
 <div class="sidebar">
 
@@ -52,9 +52,9 @@
 </div>
 <nav id="nav" ></nav>
 <div id="main">
-  
 
-  
+
+
 @foreach($ads as $ad)
 
     <div id="create" >
@@ -78,36 +78,36 @@
       <div id="Address" >
         <span >آدرس: {{$ad->address }}</span>
       </div>
-      
+
 
       <div id="comment"  >
         <span id="comm_span">کامنت:</span>
         <div id="comm_space">
-        
+
             @foreach($comms as $comm)
               @if($comm->Ads_id == $ad->id)
 
-                @foreach($users as $user)  
+                @foreach($users as $user)
                 @if(($user->id)%2==0)
-                  @if($comm->user_id == $user->id )          
+                  @if($comm->user_id == $user->id )
                     <span id="comm_user" style="color:green;" >{{$user->name}}:</span>
                   @endif
                 @endif
 
                 @if(($user->id)%2==1)
-                  @if($comm->user_id == $user->id )          
+                  @if($comm->user_id == $user->id )
                     <span id="comm_user" style="color:red;" >{{$user->name}}:</span>
                   @endif
                 @endif
 
-                 
+
                 @endforeach
-                
+
                 {{$comm->description }}
                 <br>
               @endif
             @endforeach
-          </div> 
+          </div>
         </div>
         <div id="favorite">
           {{--                    @if (!empty($ad->pivot))--}}
@@ -119,10 +119,10 @@
           {{--                    @endif--}}
           {{-- <div> --}}
             {{-- @if (isset($favs)) --}}
-            
+
             {{-- @json($fav->pivot->favorite) --}}
             {{-- @if (empty($fav->pivot->favorite)) --}}
-            
+
             <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                 @csrf
                 <input type="hidden" name="favorite" value="favorite" />
@@ -140,19 +140,19 @@
             @endif --}}
             {{-- @endforeach --}}
         </div>
-  
-        <button id="comm_button" > 
+
+        <button id="comm_button" >
           <a id="comm_button_a" href="{{route('createComment',$ad->id)}}" >کامنت بگذار!</a>
-        </button>         
-              
-      </div> 
-    </div>    
+        </button>
+
+      </div>
+    </div>
 
 @endforeach
   <div id="number" >
-  {{ $ads->links() }}  
+  {{ $ads->links() }}
   </div>
-  
+
   </div>
   <div id="nav_footer" > </div>
   <div id="footer" ></div>
