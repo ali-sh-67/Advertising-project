@@ -109,45 +109,38 @@
             @endforeach
           </div>
         </div>
-        <div id="favorite">
-          {{--                    @if (!empty($ad->pivot))--}}
-          {{-- <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
-              @csrf
-              <input type="hidden" name="favorite" value="favorite"/>
-              <a onclick="this.parentNode.submit();">favorite</a>
-          </form> --}}
-          {{--                    @endif--}}
-          {{-- <div> --}}
-            {{-- @if (isset($favs)) --}}
 
-            {{-- @json($fav->pivot->favorite) --}}
-            {{-- @if (empty($fav->pivot->favorite)) --}}
-
+         <div id="favorite">
+        {{--  @foreach($favs as $fav)
+          <div id="com_div">
+            @if (empty($fav->pivot))
             <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                 @csrf
                 <input type="hidden" name="favorite" value="favorite" />
                 <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red"></i></a>
             </form>
-            {{-- @foreach ($favs as $fav) --}}
-            {{-- @endif --}}
-            {{-- @if (($favs))
-                @json($favs)
+            @endif
+                @if (!empty($fav->pivot))
+            <form method="post" action="{{route('favoriteAd',['id'=>$fav->id])}}">
+                @csrf
+                <input type="hidden" name="favorite" value="favorite" />
+                <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark" style="font-size:48px;color:red"></i></a>
+            </form>
+            @endif
+        </div> 
+
+        @endforeach--}}
             <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                 @csrf
                 <input type="hidden" name="favorite" value="favorite" />
-                <a onclick="this.parentNode.submit();">unfavorite</a>
+                <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red"></i></a>
             </form>
-            @endif --}}
-            {{-- @endforeach --}}
         </div>
-
         <button id="comm_button" >
           <a id="comm_button_a" href="{{route('createComment',$ad->id)}}" >کامنت بگذار!</a>
         </button>
-
       </div>
     </div>
-
 @endforeach
   <div id="number" >
   {{ $ads->links() }}

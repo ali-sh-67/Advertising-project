@@ -86,6 +86,7 @@ class AdsController extends Controller
          $todo->save();                
          return redirect(route('indexAd'));   
     }   
+    //////////////////////////////////////////////////////////////////////////////////////////
     
     public function favoriteAd (Request $request, $id){
         $user=User::find(Auth::user()->id);
@@ -98,6 +99,7 @@ class AdsController extends Controller
         $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
     return view('Ad.pageAd',compact('favs','ads','comms'));
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////
     
         public function showfavoriteAd (Request $request){
             // $user=User::find(Auth::user()->id);
@@ -108,6 +110,7 @@ class AdsController extends Controller
             $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
             return view('Ad.showfavorite',['favs' => $favs]);
         }
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
         public function categoryAds(Request $request, $id){
 
