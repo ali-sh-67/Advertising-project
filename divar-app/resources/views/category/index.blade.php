@@ -18,7 +18,7 @@
             <div>
                 @foreach ($category->children as $child)
                     <div class="child">
-                        <div class="name"><a href=""><i class="{{$child->icon}}" aria-hidden="true"></i> {{$child->name}}</a></div>
+                        <div class="name"><a href="{{route('categoryAds',['id'=>$child->id])}}"><i class="{{$child->icon}}" aria-hidden="true"></i> {{$child->name}}</a></div>
                         @if(Auth::user()->name=='admin' && Auth::user()->email=='admin@gmail.com')
                             <div class="create"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
                             <div class="edit"><a href="{{route('category.edit',['id'=>$child->id])}}"><i class="fa fa-pencil-square-o"

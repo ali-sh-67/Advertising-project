@@ -17,6 +17,7 @@ class categoryController extends Controller
     public function index(Request $request)
     {
         $categories = category::root()->get();
+//        return $categories;
         return view('category.index')->with('categories', $categories);
 
     }
@@ -108,3 +109,4 @@ class categoryController extends Controller
 
 
 }
+

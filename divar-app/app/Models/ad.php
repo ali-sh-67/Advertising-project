@@ -8,7 +8,6 @@ class ad extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'id',
         'user_id',
@@ -27,22 +26,24 @@ class ad extends Model
     {
         return $this->belongsTo(Category::class,'category_id','id');
     }
+    
     public function User()
     {
         return $this->belongsTo(User::class, 'user_id','id');
     }
+
     public function Comment()
     {
         return $this->hasManyTo(Comment::class, 'Ads_id','id');
     }
 
-    
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'User_ad')->withPivot('favorite');
+    }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
+
+
     protected $hidden = [
 
     ];
