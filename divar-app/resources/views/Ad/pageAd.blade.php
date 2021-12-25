@@ -51,52 +51,63 @@
 
 </div>
 <nav id="nav" ></nav>
-<div id="main">
+<div class="main">
 
 
 
 @foreach($ads as $ad)
 
-    <div id="create" >
-      <div id="advert" >
-        <span id="nameAdvert">کد آگهی: {{$ad->id}} </span>
+    <div class="create" >
+      <div class="advert" >
+        <span class="nameAdvert">کد آگهی: {{$ad->id}} </span>
       </div>
 
-      <div id="img" >
-        <img id="showImg"  src="{{asset('images/' .$ad->image_url)}}">
+      <div class="img" >
+        <img class="showImg"  src="{{asset('images/' .$ad->image_url)}}">
       </div>
 
-      <div id="title" >
+      <div class="title" >
         <span >عنوان: {{$ad->title}}</span>
       </div>
-      <div id="description">
+      <div class="description">
         <span >توضیحات: {{$ad->description}}</span>
       </div>
-      <div id="price" >
-        <span >قیمت:{{$ad->price }} </span>
+      <div id="PriceTell">
+        <div class="price" >
+          <span class="showPrice" >قیمت: <span style="color:red;">{{$ad->price }} </span>تومان</span>
+        </div>
+        <span  class="showTell">تلفن: {{$ad->phone_number_ads}} </span>
+        
+       
       </div>
-      <div id="Address" >
+      <div class="Address" >
         <span >آدرس: {{$ad->address }}</span>
       </div>
+
 
 
       <div id="comment"  >
         <span id="comm_span">کامنت:</span>
         <div id="comm_space">
 
+
             @foreach($comms as $comm)
               @if($comm->Ads_id == $ad->id)
 
                 @foreach($users as $user)
                 @if(($user->id)%2==0)
+
                   @if($comm->user_id == $user->id )
                     <span id="comm_user" style="color:green;" >{{$user->name}}:</span>
+
                   @endif
                 @endif
 
                 @if(($user->id)%2==1)
+
                   @if($comm->user_id == $user->id )
                     <span id="comm_user" style="color:red;" >{{$user->name}}:</span>
+
                   @endif
                 @endif
 
@@ -129,6 +140,7 @@
             @endif
         </div> 
 
+
         @endforeach--}}
             <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                 @csrf
@@ -142,13 +154,14 @@
       </div>
     </div>
 @endforeach
-  <div id="number" >
-  {{ $ads->links() }}
+  <div class="number" >
+  {{ $ads->links() }}  
+
   </div>
 
   </div>
-  <div id="nav_footer" > </div>
-  <div id="footer" ></div>
+  <div class="nav_footer" > </div>
+  <div class="footer" ></div>
 
 </body>
 </html>

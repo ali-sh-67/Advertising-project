@@ -18,7 +18,6 @@ class CreateAdsTable extends Migration
             $table->bigInteger("user_id")->unsigned();
             $table->biginteger("category_id")->unsigned();
             $table->string("title");
-
             $table->text("description");
             $table->string("image_url")->default(public_path('images/default/ads_image.png'));
             $table->string("price")->nullable();
