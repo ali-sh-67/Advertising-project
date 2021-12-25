@@ -16,8 +16,8 @@ class AdsController extends Controller
         $users = DB::table('users')->get();              
         $id = Auth::user()->id;        
         $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(5);
-        $comms=comment::all();
-        $unames=User::all(); 
+        $comms=comment::all();        
+        // $cats=DB::table('categorys')->get();
         return view('Ad.pageAd',compact('ads','comms','users'));
     }
 
@@ -26,12 +26,12 @@ class AdsController extends Controller
         $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(10);
         $count=DB::table('Ads')->orderBy('id','Desc')->count();
         return view('Ad.myListAd',compact('ads','count'));
-
     }
 
    public function createAd()
-   {  
-       return view('Ad.createAd'); 
+   { 
+       $cats=DB::table('categorys')->get(); 
+       return view('Ad.createAd',compact('cats')); 
    }
 
    public function storeAd(Request $request)
@@ -39,20 +39,19 @@ class AdsController extends Controller
         $newImageName =time() . '-' . $request->name . '.' . $request->image_url->extension();        
         $request->image_url->move(public_path('images'),$newImageName);
 
-        $user = Auth::user()->id;
-        $category = Auth::user()->id;
+        $cats=DB::table('categorys')->get();
+        $user = Auth::user()->id;       
         
         $ad=new Ad([
             'user_id'=>$user,
-            'category_id'=>$category,
+            'category_id'=>$request->get('category'),
             'title'=> $request->get('title'),
             'description'=>$request->get('description'),
             'image_url'=>$newImageName,
             'price'=>$request->get('price'),
             'address'=>$request->get('address'),
             'phone_number_ads'=> $request->get('phone_number_ads'),
-        ]);
-        
+        ]);        
         
          if ($ad->save()) {            
             return redirect(route('indexAd'));          
@@ -64,28 +63,40 @@ class AdsController extends Controller
     {    
         $id->delete();
         return redirect(route('indexAd'));
-    }    
+    }
+        
     public function showAd(Ad $id)
-    {         
-        $users = Auth::user()->name;             
-        return view('Ad.showAd')->with(['id'=>$id]);   
+    { 
+        $users = DB::table('users')->get(); 
+        $comms=comment::all();        
+        return view('Ad.showAd',compact('id','comms','users')); 
     }
 
     public function editAd(Ad $id)
     {   
+        $cats=DB::table('categorys')->get();
+        $idCats=category::where('id',$id->category_id)->first()->name;        
         $users = Auth::user()->name;  
-        return view('Ad.editAd')->with(['id'=>$id])->with(['users'=>$users]);            
+        return view('Ad.editAd',compact('id','cats','users','idCats'));            
     }
+    
     public function updateAd(Request $request, $id)
     {
         $todo = Ad::where('id', $id)->first();           
         $todo->title= $request->get('title');
+        $todo->category_id= $request->get('category'); 
         $todo->description= $request->get('description');
-        $todo->price= $request->get('price');         
+        $todo->address= $request->get('address');
+        $todo->price= $request->get('price');               
+        $todo->phone_number_ads= $request->get('phone_number_ads'); 
 
-         $todo->save();                
-         return redirect(route('indexAd'));   
-    }   
-    
+         if($request->has('image_url')) {
+            $newImageName =time() . '-' . $request->name . '.' . $request->image_url->extension();        
+            $request->image_url->move(public_path('images'),$newImageName);
+            $todo->image_url=$newImageName;           
+        }              
 
+        $todo->save();                
+        return redirect(route('indexAd'));   
+    }  
 }
