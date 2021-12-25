@@ -26,6 +26,8 @@ Route::post('/Ad/updateAd/{id}',[AdsController::class, 'updateAd'])->name('updat
 Route::post('/Ad/favoriteAd/{id}',[AdsController::class, 'favoriteAd'])->name('favoriteAd')->middleware('auth');
 Route::get('/Ad/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name('showfavoriteAd')->middleware('auth');
 
+Route::get('/Ad/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('allfavoriteAd')->middleware('auth');
+
 Route::get('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
 
 Route::get('/Comment/create/{id}',[commentController::class, 'createComment'])->name('createComment')->middleware('auth');
