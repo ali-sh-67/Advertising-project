@@ -36,7 +36,7 @@
                     </form>
                     {{--                    @endif--}}
                 </div>
-
+<div><a href="{{route('allfavoriteAd')}}">allfavoriteAd</a></div>
 
             </div>
 

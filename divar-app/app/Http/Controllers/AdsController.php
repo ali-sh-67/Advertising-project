@@ -123,4 +123,19 @@ class AdsController extends Controller
         $favs=User::find(Auth::user()->id)->ads()->get();
         return view('Ad.pageAd',compact('ads','comms','users','favs'));
         }
+    //////////////////////////////////////////////////////////////////////////////////////////////
+        public function allfavoriteAd(Request $request){
+            $count=DB::table('ads')->selectRaw('*')->count();
+            // return $count;
+            // for ( $i=1; $i <=$count ; $i++ ){
+            //    $allfavs=ad::find(1)->users()->count();
+               $allfavs=DB::table('user_ad')->groupBy('ad_id')->selectRaw('count(*) as total,ad_id')
+               ->orderBy('total','desc')->get('ad_id');
+            //    foreach($allfavs as $allfav){
+                //    echo $allfav->pivot->user_id;
+                 return view('Ad/allfavoriteAd',compact('allfavs'));
+            // }
+            // }
+
+        }    
 }
