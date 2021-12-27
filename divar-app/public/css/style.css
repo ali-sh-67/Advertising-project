@@ -109,21 +109,31 @@ a {
 }
 
 .main{   
-   width: 1200px;
-
+   width: 100%;
    height: auto;
    margin: 17px auto;    
    background-color:#e4dcdc;
    font-family: Byekan;
    font-size: 16px;
 }
+.sidebar{
+   width: 20%;
+   height: 512px;
+   float: right;
+   margin-top:5px;
+   border: 1px solid black;
+   margin-right: 60px;
+   background-color:#fff;
+}
 .create{
-   width:100%;
+   width:70%;
    height:512px;
    border: 1px solid black;
-   margin-top:40px; 
+   margin-top:5px; 
    background-color:#fff;
    font-family: Byekan;
+   float: left;
+   margin-left: 60px;    
 }
 .advert{
    width: 100%; 
@@ -143,7 +153,7 @@ a {
 .showImg{
    width:100% ;
    height:100%;
-   padding-right: 1px;
+   padding-right: 141px;
    padding-bottom: 3px;
 }
 .title{
@@ -184,18 +194,15 @@ a {
    padding-top: 5px;
    margin-right:10px; 
    display:block;
-}
-.tell{
-   width: 248px;
-   height:35px;   
-   border-left:1px solid black;
-   border-bottom:1px solid black;
-   float: right;   
-}
+} 
+
 .showTell{
-   padding-top: 5px;
-   margin-right:280px; 
-   display:block;     
+   width: 100%; 
+   height:35px;  
+   float: right;
+   margin-top: -26px;
+   margin-right: 221px;
+   
 }
 .Address{
    width: 45%; 
@@ -220,7 +227,7 @@ a {
   margin-right:36px;
 }
 .comm_space{
-   width:920px;
+   width:675px;
    height:150px;
    float:right;
    border:solid 1px black;
@@ -239,31 +246,45 @@ a {
    margin-top:108px;
    margin-right:46px;
    text-align:center;
-   display:clock;
+   
    background-color:#f4511e;
-   border-radius:15px;    
+   border-radius:15px; 
+   width: 84px;
+   height: 40px;   
 }
 .comm_button_a{
    text-decoration:none;
+   font-size: 14px !important;
 }
 .number{
    width: auto;
-   height:auto;
-   padding-top:6px;
+   height:auto;  
    text-align:center;
    background-color:#e4e1e1;   
 }
+.footer{
+   width: 100%;
+   height: 265px;
+   float: right;
+   margin-top: 5px;
+}
 .nav_footer{
    width: 100%;
-   height: 40px;
-   margin-top:-18px;
+   height: 40px;   
    background: #f7f8fa;    
    background-color:#afacac;
 }
-.footer{
+.footer_down{
    width: 100%;
    height:220px;
    background-color:hsla(239, 93%, 48%, 0.871);
+}
+#favorite{
+   margin-top: -127px;
+   padding-right: 810px;
+   
+   
+
 }
 /* ********************end PageAd**************************** */
 /* *************************createAd***************************** */

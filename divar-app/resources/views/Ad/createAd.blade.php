@@ -29,14 +29,6 @@
                
                     <label class="label_ad" >نام آگهی:</label>
                     <input class="input_Ad"  type="text" name="title" placeholder="نام آگهی را وارد کنید">
-
-                    <label class="label_ad" >انتخاب دسته بندی:</label>
-                    <select class="input_Ad"  name="category">
-                        <option value="">انتخاب کن</option>
-                        @foreach($cats as $cat)
-                            <option value="{{$cat->id}}">{{$cat->name}}</option>                        
-                        @endforeach            
-                    </select>
               
                 
                     <label id="label_description" >توضیحات:</label>

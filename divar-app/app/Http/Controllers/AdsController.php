@@ -36,7 +36,7 @@ class AdsController extends Controller
     $cats=DB::table('categorys')->get(); 
       
     $categories = category::all();
-       return view('Ad.createAd',compact('categories', 'cats');
+       return view('Ad.createAd',compact('categories', 'cats'));
 
    }
 
