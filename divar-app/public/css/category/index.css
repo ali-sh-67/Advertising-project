@@ -1,19 +1,15 @@
 .categories_list {
-    width: 20%;
-    background-color:#dbdbdb;
-
+    width: 100%;    
+    
 }
-/*.categories_list a {*/
-/*color: #565e64;*/
-/*}*/
 div .category{
     margin-right: 30px;
-    font-size: 12px;
+    font-size: 20px;
     padding-top: 15px;
 }
 div .child{
     margin-right: 50px;
-    font-size: 10px;
+    font-size: 14px;
 }
 div .subchild{
     margin-right: 100px;
@@ -27,10 +23,6 @@ div .sub2child{
     margin-right: 200px;
     font-size: 10px;
 }
-/*.category{*/
-/*    font-size: 12px;*/
-/*    padding-top: 15px;*/
-/*}*/
 .category div{
     display: inline;
 }
