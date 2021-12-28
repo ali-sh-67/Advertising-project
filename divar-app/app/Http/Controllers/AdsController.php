@@ -19,7 +19,6 @@ class AdsController extends Controller
 
         $comms=comment::all();
         $unames=User::all();
-//        $favs=User::find(Auth::user()->id)->ads()->get();
         $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
         return view('Ad.pageAd',compact('ads','comms','users','favs'));
 
@@ -132,12 +131,8 @@ class AdsController extends Controller
     //////////////////////////////////////////////////////////////////////////////////////////////
 
         public function showfavoriteAd (Request $request){
-            // $user=User::find(Auth::user()->id);
-    //        $ad=ad::find($id)->id;
-    //        $user->ads()->detach($ad,['favorite'=>'favorite']);
-    //        $user->ads()->updateExistingPivot($id,['favorite'=> 'not']);
-
             $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
+//            $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
             return view('Ad.showfavorite',['favs' => $favs]);
         }
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,14 +140,23 @@ class AdsController extends Controller
         public function categoryAds(Request $request, $id){
 
         $users = DB::table('users')->get();
-        // $id = Auth::user()->id;
         $ads=DB::table('Ads')->where('category_id',$id)->orderBy('id','Desc')->paginate(5);
-        // return $ads;
         $comms=comment::all();
-        // $unames=User::all();
-        $favs=User::find(Auth::user()->id)->ads()->get();
-        return view('Ad.pageAd',compact('ads','comms','users','favs'));
+//        $favs=User::find(Auth::user()->id)->ads()->get();
+            $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
+            return view('Ad.pageAd',compact('ads','comms','users','favs'));
         }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function parentCategoryAds(Request $request, $id){
+
+        $users = DB::table('users')->get();
+        $childs=category::find($id)->children->pluck('id')->toArray();
+        $ads=DB::table('Ads')->whereIn('category_id',$childs)->orderBy('id','Desc')->paginate(5);
+        $comms=comment::all();
+        $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
+        return view('Ad.pageAd',compact('ads','comms','users','favs'));
+    }
     //////////////////////////////////////////////////////////////////////////////////////////////
         public function allfavoriteAd(Request $request){
             $count=DB::table('ads')->selectRaw('*')->count();
