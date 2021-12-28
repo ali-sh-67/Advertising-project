@@ -118,70 +118,76 @@ a {
 }
 .sidebar{
    width: 20%;
-   height: 512px;
+   height: auto;
    float: right;
    margin-top:5px;
    border: 1px solid black;
    margin-right: 60px;
    background-color:#fff;
+   display: inline-block;
 }
 .create{
    width:70%;
-   height:512px;
+   height:50%;
    border: 1px solid black;
    margin-top:5px; 
    background-color:#fff;
    font-family: Byekan;
    float: left;
-   margin-left: 60px;    
+   margin-left: 60px;      
 }
 .advert{
    width: 100%; 
-   height:29px; 
+   height:29%; 
    border-bottom:1px solid black;
 }
 .nameAdvert{
-   margin-top: 11px;
+   margin-top: 3px;
+   margin-bottom: 5px;
    margin-right:10px; 
    display:block;
+   font-size: 18px;
 }
 .img{
-   width: 659px;
-   height:277px;
+   width: 60%;
+   height:31%;
    float:left;
 }
 .showImg{
-   width:100% ;
-   height:100%;
-   padding-right: 141px;
+   width: 565px;
+   height: 186px;
+   padding-right: 47px;
    padding-bottom: 3px;
 }
 .title{
    width: 45%; 
-   height:42px; 
+   height:42%; 
    border-left: 1px solid black;
    border-bottom:1px solid black;
 }
-.title span{
-   padding-top: 11px;
+.title span{   
+   margin-bottom: 5px;
    margin-right:10px; 
    display:block;
+   font-size: 18px;
 }
 .description{
    width: 45%; 
-   height:115px; 
+   height:100%; 
    border-left: 1px solid black;
    border-bottom:1px solid black;
 }
-.description span{
-   padding-top: 11px;
+.description span{   
+   margin-bottom: 5px;
    margin-right:10px; 
    display:block;
+   font-size: 18px;
 }
 #PriceTell{
    width:45%;
    height:35px;
-   border-left:1px solid black;
+   border-left: 1px solid black; 
+   
    border-bottom:1px solid black;   
 }
 .price{
@@ -191,17 +197,31 @@ a {
   float: right;
 }
 .showPrice{
-   padding-top: 5px;
+   padding-top: 3px;
    margin-right:10px; 
    display:block;
+   font-size: 18px;
+   float: right;
 } 
+.tell{
+   width: 98%;
+   height:34px;
+   /* background-color: chartreuse; */
+   margin-right: 67px;
+   
+}
 
 .showTell{
    width: 100%; 
    height:35px;  
    float: right;
    margin-top: -26px;
-   margin-right: 221px;
+   /* margin-bottom: 0; */
+   margin-right: 75%;
+   font-size: 18px;
+   /* padding-top: 3px; */
+   display: block;
+   /* padding-bottom: 20px; */
    
 }
 .Address{
@@ -210,9 +230,10 @@ a {
    border-left: 1px solid black;
 }
 .Address span{
-  padding-top: 10px;
+  padding-top: 5px;
   margin-right:10px; 
   display:block;
+  font-size: 18px;
 }
 .comment{
    width: 100%; 
@@ -224,10 +245,11 @@ a {
   width:10px;
   height:10px;
   margin-top:14px;
-  margin-right:36px;
+  margin-right: 27px;
+  font-size: 18px;
 }
 .comm_space{
-   width:675px;
+   width:72%;
    height:150px;
    float:right;
    border:solid 1px black;
@@ -344,7 +366,7 @@ a {
    font-size: 18px;
 }
 #input_submit{
-   margin-top: 48px;
+   margin-top: 5%;
    background-color:rgba(11,194,240,0.932);
    border-radius:20%;
    width:100px;
