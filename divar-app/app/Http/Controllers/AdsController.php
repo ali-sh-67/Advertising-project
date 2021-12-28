@@ -19,7 +19,8 @@ class AdsController extends Controller
 
         $comms=comment::all();
         $unames=User::all();
-        $favs=User::find(Auth::user()->id)->ads()->get();
+//        $favs=User::find(Auth::user()->id)->ads()->get();
+        $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
         return view('Ad.pageAd',compact('ads','comms','users','favs'));
 
     }
@@ -32,9 +33,9 @@ class AdsController extends Controller
     }
 
    public function createAd()
-   { 
-    $cats=DB::table('categorys')->get(); 
-      
+   {
+    $cats=DB::table('categorys')->get();
+
     $categories = category::all();
        return view('Ad.createAd',compact('categories', 'cats'));
 
@@ -74,45 +75,45 @@ class AdsController extends Controller
         return redirect(route('indexAd'));
     }
 
-        
+
     public function showAd(Ad $id)
-    { 
-        $users = DB::table('users')->get(); 
-        $comms=comment::all();        
-        return view('Ad.showAd',compact('id','comms','users')); 
+    {
+        $users = DB::table('users')->get();
+        $comms=comment::all();
+        return view('Ad.showAd',compact('id','comms','users'));
     }
 
     public function editAd(Ad $id)
-    {   
+    {
         $cats=DB::table('categorys')->get();
-        $idCats=category::where('id',$id->category_id)->first()->name;        
-        $users = Auth::user()->name;  
-        return view('Ad.editAd',compact('id','cats','users','idCats'));            
+        $idCats=category::where('id',$id->category_id)->first()->name;
+        $users = Auth::user()->name;
+        return view('Ad.editAd',compact('id','cats','users','idCats'));
 
     }
-    
+
     public function updateAd(Request $request, $id)
     {
         $todo = Ad::where('id', $id)->first();
         $todo->title= $request->get('title');
-        $todo->category_id= $request->get('category'); 
+        $todo->category_id= $request->get('category');
         $todo->description= $request->get('description');
 
         $todo->address= $request->get('address');
-        $todo->price= $request->get('price');               
-        $todo->phone_number_ads= $request->get('phone_number_ads'); 
+        $todo->price= $request->get('price');
+        $todo->phone_number_ads= $request->get('phone_number_ads');
 
          if($request->has('image_url')) {
-            $newImageName =time() . '-' . $request->name . '.' . $request->image_url->extension();        
+            $newImageName =time() . '-' . $request->name . '.' . $request->image_url->extension();
             $request->image_url->move(public_path('images'),$newImageName);
-            $todo->image_url=$newImageName;           
-        }              
+            $todo->image_url=$newImageName;
+        }
 
-        $todo->save();                
-        return redirect(route('indexAd'));   
-    }  
+        $todo->save();
+        return redirect(route('indexAd'));
+    }
 
-    
+
 
     //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -124,7 +125,8 @@ class AdsController extends Controller
         $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(5);
         $comms=comment::all();
         // $fav=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
-        $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
+//        $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
+        $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
     return view('Ad.pageAd',compact('favs','ads','comms'));
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
