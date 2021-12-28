@@ -282,7 +282,10 @@ a {
    width: auto;
    height:auto;  
    text-align:center;
-   background-color:#e4e1e1;   
+   /* background-color:#e4e1e1;  */
+   float: left;
+   margin-top: 437px; 
+   margin-right: 200px;
 }
 .footer{
    width: 100%;
