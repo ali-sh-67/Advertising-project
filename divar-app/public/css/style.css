@@ -279,11 +279,11 @@ a {
    font-size: 14px !important;
 }
 .number{
-   width: auto;
-   height:auto;  
+   /* width: auto;
+   height:auto;   */
    text-align:center;  
-   float: left;
-   margin-top: 437px; 
+   /* float: left; */
+   /* margin-top: 11px;  */
    margin-right: 200px;
 }
 .footer{
