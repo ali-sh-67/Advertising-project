@@ -22,7 +22,7 @@
                 <a class="yekan login" href="">ورود</a>
                 <span id="register"></span>
                 <a class="yekan reg" href=""> ثبت نام کنید </a>
-                <form method="get" action="{{route('showfavoriteAd')}}">
+                <form method="post" action="{{route('showfavoriteAd')}}">
                     @csrf
                     <input type="hidden" name="favorite" value="not"/>
                     <a style="margin-right:46px;float:right;" onclick="this.parentNode.submit();">showfavorite</a>
