@@ -78,7 +78,11 @@
             <div id="PriceTell">
               <div class="price" >
                 <span class="showPrice" >قیمت: <span style="color:red;">{{$ad->price }} </span>تومان</span>
-                <div class="showTell">تلفن: {{$ad->phone_number_ads}} </div>
+                <div class="tell">
+                  <span class="showTell">تلفن: {{$ad->phone_number_ads}} </span>
+                </div>
+                
+
               </div>
               
               
