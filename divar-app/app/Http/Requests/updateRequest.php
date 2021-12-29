@@ -15,12 +15,12 @@ class updateRequest extends FormRequest
 
     public function rules()
     {
+    dd($this->all());
+        $category = category::where('user_id', Auth::user()->id)->where('id', $id)->first();
+
         return [
-//        /        $category = category::where('user_id', Auth::user()->id)->where('id', $id)->first();
-////
-////        return [
-////            'parent_id' => 'bail|regex:(^[0-9]*$)|nullable|not_in:' . $category->id
-////        ];
+            'parent_id' => 'bail|regex:(^[0-9]*$)|nullable|not_in:' . $category->id
         ];
+        
     }
 }
