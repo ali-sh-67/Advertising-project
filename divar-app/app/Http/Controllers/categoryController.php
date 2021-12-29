@@ -64,13 +64,13 @@ class categoryController extends Controller
     }
 
 
-    public function update (Request $request, $id)
+    public function update (updateRequest $request, $id)
 
     {
         $category = category::find($id);
-        $request->validate([
-            'parent_id' => 'bail|regex:(^[0-9]*$)|nullable|not_in:' . $category->id
-        ]);
+        // $request->validate([
+        //     'parent_id' => 'bail|regex:(^[0-9]*$)|nullable|not_in:' . $category->id
+        // ]);
 
         if ($category->id != $request->parent_id) {
             $category->name = $request->name;
