@@ -66,11 +66,19 @@
                 <span>توضیحات: {{$ad->description}}</span>
             </div>
             <div id="PriceTell">
-                <div class="price">
-                    <span class="showPrice">قیمت: <span style="color:red;">{{$ad->price }} </span>تومان</span>
-                    <div class="showTell">تلفن: {{$ad->phone_number_ads}} </div>
-                </div>
 
+              <div class="price" >
+                <span class="showPrice" >قیمت: <span style="color:red;">{{$ad->price }} </span>تومان</span>
+                <div class="tell">
+                  <span class="showTell">تلفن: {{$ad->phone_number_ads}} </span>
+                </div>
+                
+
+              </div>
+              
+              
+              
+            
 
             </div>
             <div class="Address">
@@ -142,6 +150,23 @@
     <div class="nav_footer"></div>
     <div class="footer_down"></div>
 </div>
+
+
+      @endforeach
+      
+    
+    
+    
+  </div>
+  <div class="number" >
+        {{ $ads->links() }}  
+  </div>
+  <div class="footer">
+    <div class="nav_footer" > </div>
+    <div class="footer_down" ></div>
+  </div>
+  
+ 
 
 
 </body>
