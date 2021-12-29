@@ -125,14 +125,14 @@
                         <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                             @csrf
                             <input type="hidden" name="favorite" value="favorite"/>
-                            <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark" style="font-size:48px;color:red"></i></a>
+                            <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark" style="font-size:48px;color:red;margin-right:-47px;"></i></a>
                         </form>
                     @endif
                     @if(!in_array($ad->id,$favs))
                         <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
                             @csrf
                             <input type="hidden" name="favorite" value="favorite"/>
-                            <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red"></i></a>
+                            <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red ;margin-right:-47px;"></i></a>
                         </form>
                     @endif
                 </div>
@@ -152,19 +152,11 @@
 </div>
 
 
-      @endforeach
+     
       
     
     
-    
-  </div>
-  <div class="number" >
-        {{ $ads->links() }}  
-  </div>
-  <div class="footer">
-    <div class="nav_footer" > </div>
-    <div class="footer_down" ></div>
-  </div>
+  
   
  
 

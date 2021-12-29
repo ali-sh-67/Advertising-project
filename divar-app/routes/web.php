@@ -29,8 +29,8 @@ Route::post('/Ad/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name
 
 Route::get('/Ad/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('allfavoriteAd')->middleware('auth');
 
-Route::post('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
-Route::post('/Ad/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
+Route::get('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
+Route::get('/Ad/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
 
 
 Route::get('/Comment/create/{id}',[commentController::class, 'createComment'])->name('createComment')->middleware('auth');

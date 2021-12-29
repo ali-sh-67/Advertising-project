@@ -25,7 +25,7 @@ class AdsController extends Controller
     }
 
     public function myListAd(Request $request){
-        $id = Auth::user()->id;
+        
         $ads=DB::table('Ads')->orderBy('id','Desc')->paginate(10);
         $count=DB::table('Ads')->orderBy('id','Desc')->count();
         return view('Ad.myListAd',compact('ads','count'));
@@ -117,6 +117,7 @@ class AdsController extends Controller
     //////////////////////////////////////////////////////////////////////////////////////////
 
     public function favoriteAd (Request $request, $id){
+        $users = DB::table('users')->get();
         $user=User::find(Auth::user()->id);
     //    $user->ads()->attach($ad,['favorite'=>'favorite']);
             $user->ads()->toggle([$id=>['favorite'=> 'favorite']]);
@@ -126,7 +127,7 @@ class AdsController extends Controller
         // $fav=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
 //        $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
         $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
-    return view('Ad.pageAd',compact('favs','ads','comms'));
+    return view('Ad.pageAd',compact('favs','ads','comms','users'));
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
 
