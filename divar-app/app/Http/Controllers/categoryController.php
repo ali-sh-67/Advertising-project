@@ -17,7 +17,6 @@ class categoryController extends Controller
     public function index(Request $request)
     {
         $categories = category::root()->get();
-//        return $categories;
         return view('category.index')->with('categories', $categories);
 
     }
@@ -69,11 +68,8 @@ class categoryController extends Controller
 
     {
         $category = category::find($id);
-//        $category = category::where('user_id', Auth::user()->id)->where('id', $id)->first();
-//        return $category;
         $request->validate([
             'parent_id' => 'bail|regex:(^[0-9]*$)|nullable|not_in:' . $category->id
-
         ]);
 
         if ($category->id != $request->parent_id) {
