@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
 
+
+
     <div id="create_main">
         @foreach($errors->all() as $error)
             {{$error}}
@@ -54,7 +56,7 @@
     </div>
 
 
-
+    
 
 
 
