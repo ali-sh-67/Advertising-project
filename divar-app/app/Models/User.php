@@ -29,7 +29,7 @@ class User extends Authenticatable
     public function Ad(){
         return $this->hasMany(Ad::class);
     }
-    
+
     public function category(){
         return $this->hasMany(caregory::class,'user_id','id');
     }
@@ -44,7 +44,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-   
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
