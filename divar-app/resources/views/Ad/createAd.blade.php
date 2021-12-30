@@ -11,10 +11,6 @@
 <body style="background: #e4e1e1;" >
 
 
-
-<!-- @extends('layouts.main')
-
-@section('content') -->
     <div style="width:1200px;margin:10px auto;text-align:center;">
     <div id="create_main">
         @foreach($errors->all() as $error)
@@ -68,7 +64,7 @@
 
     </div>
     </div>
-<!-- @endsection -->
+
 
 </body>
 </html>
