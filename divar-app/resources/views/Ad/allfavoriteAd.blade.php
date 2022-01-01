@@ -49,7 +49,6 @@
     </header>
     <nav id="nav"></nav>
     <div id="main">
-
         @foreach ($allfavs as $allfav)
             @foreach ($allads as $allad)
                 @if ($allfav->ad_id==$allad->id)

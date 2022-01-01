@@ -3,7 +3,10 @@
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\commentController;
+use App\Models\ad;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +35,7 @@ Route::get('/Ad/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('a
 Route::get('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
 Route::get('/Ad/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
 
+Route::post('/Ad/search',[AdsController::class,'search'])->name('search');
 
 Route::get('/Comment/create/{id}',[commentController::class, 'createComment'])->name('createComment')->middleware('auth');
 Route::post('/Comment/store/{id}',[commentController::class, 'StoreComment'])->name('StoreComment');

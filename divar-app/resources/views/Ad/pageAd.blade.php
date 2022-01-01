@@ -25,17 +25,21 @@
                 <form method="post" action="{{route('showfavoriteAd')}}">
                     @csrf
                     <input type="hidden" name="favorite" value="not"/>
-                    <a style="margin-right:46px;float:right;" onclick="this.parentNode.submit();">showfavorite</a>
+                    <a style="margin-right:46px;float:right;" onclick="this.parentNode.submit();">My favorite</a>
                 </form>
-                <div style="margin-right:54px;float:right;"><a href="{{route('allfavoriteAd')}}">allfavoriteAd</a></div>
+                <div style="margin-right:54px;float:right;"><a href="{{route('allfavoriteAd')}}">All favorites</a></div>
             </div>
 
 
-            <div id="header_right_bottom">
-                <div id="search_top">
-                    <input class="yekan input" type="text" placeholder="محصول ، دسته یا برند مورد نظر خود را جستجو کنید ... "/>
-                    <span id="search_pic"></span>
-                </div>
+{{--            <div id="header_right_bottom">--}}
+{{--                <div id="search_top">--}}
+                    <form action="{{route('search')}}" method="post">
+                        @csrf
+                    <input class="yekan input" type="text" name="search" placeholder="محصول ، دسته یا برند مورد نظر خود را جستجو کنید ... "/>
+                    <input type="submit" value="search">
+                    </form>
+{{--                    <span id="search_pic"></span>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -72,13 +76,13 @@
                 <div class="tell">
                   <span class="showTell">تلفن: {{$ad->phone_number_ads}} </span>
                 </div>
-                
+
 
               </div>
-              
-              
-              
-            
+
+
+
+
 
             </div>
             <div class="Address">
@@ -152,13 +156,13 @@
 </div>
 
 
-     
-      
-    
-    
-  
-  
- 
+
+
+
+
+
+
+
 
 
 </body>
