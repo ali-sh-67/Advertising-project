@@ -1,14 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<title>صفحه ایجاد آگهی</title>
-<script src="js/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
-</head>
-<body style="background: #e4e1e1;" >
+@include('layouts.header')
 
 
     <div style="width:1200px;margin:10px auto;text-align:center;">
@@ -63,6 +53,7 @@
 
 
     </div>
+    @include('layouts.footer')
     </div>
 
 
