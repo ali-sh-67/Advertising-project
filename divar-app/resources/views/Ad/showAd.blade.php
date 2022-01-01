@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+@include('layouts.header')
+   <div style="">
 
-<meta charset="UTF-8">
-<title>صفحه اصلی دیوار</title>
-<script src="js/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
-</head>
-
-<body class="body" >
-
-
-
-<div class="main">
-   <div style="margin-left:116px;margin-right:-116px;">
-
-          <div class="create"  >
+          <div class="createShow"  >
             <div class="advert" >
               <span class="nameAdvert">کد آگهی: {{$id->id}} </span>
             </div>
 
             <div class="img" >
-              <img class="showImg"  src="{{asset('images/' .$id->image_url)}}">
+              <img class="showImgShow"  src="{{asset('images/' .$id->image_url)}}">
             </div>
 
             <div class="title" >
@@ -53,7 +38,7 @@
               <div class="comm_space">
               
                   @foreach($comms as $comm)
-                    @if($comm->Ads_id == $ad->id)
+                    @if($comm->Ads_id == $id->id)
 
                       @foreach($users as $user)  
                       @if(($user->id)%2==0)
@@ -89,6 +74,7 @@
  
   
   </div>
+  @include('layouts.footer')
   
 
 </body>
