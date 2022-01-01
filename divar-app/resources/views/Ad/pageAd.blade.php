@@ -1,4 +1,6 @@
+
 @include('layouts.header')
+
 <div class="main">
 
     <div class="sidebar">
@@ -30,13 +32,13 @@
                 <div class="tell">
                   <span class="showTell">تلفن: {{$ad->phone_number_ads}} </span>
                 </div>
-                
+
 
               </div>
-              
-              
-              
-            
+
+
+
+
 
             </div>
             <div class="Address">
@@ -108,6 +110,8 @@
 @include('layouts.footer')
   
  
+
+
 
 
 </body>

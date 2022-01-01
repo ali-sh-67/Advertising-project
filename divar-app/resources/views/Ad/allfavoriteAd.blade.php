@@ -1,4 +1,7 @@
+
 @include('layouts.header')
+
+
 
         @foreach ($allfavs as $allfav)
             @foreach ($allads as $allad)
