@@ -87,7 +87,8 @@ class AdsController extends Controller
         $cats=DB::table('categorys')->get();
         $idCats=category::where('id',$id->category_id)->first()->name;
         $users = Auth::user()->name;
-        return view('Ad.editAd',compact('id','cats','users','idCats'));
+        $categories = category::all();
+        return view('Ad.editAd',compact('id','cats','users','idCats','categories'));
 
     }
 
