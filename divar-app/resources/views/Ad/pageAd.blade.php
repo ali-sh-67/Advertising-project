@@ -1,50 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <meta charset="UTF-8">
-    <title>صفحه اصلی دیوار</title>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+@include('layouts.header')
 
-
-</head>
-
-<body class="body">
-
-
-<header class="header">
-    <div id="myheader">
-        <div id="header_right">
-            <div id="header_right_top">
-                <span id="lock"></span>
-                <a class="yekan login" href="">ورود</a>
-                <span id="register"></span>
-                <a class="yekan reg" href=""> ثبت نام کنید </a>
-                <form method="post" action="{{route('showfavoriteAd')}}">
-                    @csrf
-                    <input type="hidden" name="favorite" value="not"/>
-                    <a style="margin-right:46px;float:right;" onclick="this.parentNode.submit();">My favorite</a>
-                </form>
-                <div style="margin-right:54px;float:right;"><a href="{{route('allfavoriteAd')}}">All favorites</a></div>
-            </div>
-
-
-{{--            <div id="header_right_bottom">--}}
-{{--                <div id="search_top">--}}
-                    <form action="{{route('search')}}" method="post">
-                        @csrf
-                    <input class="yekan input" type="text" name="search" placeholder="محصول ، دسته یا برند مورد نظر خود را جستجو کنید ... "/>
-                    <input type="submit" value="search">
-                    </form>
-{{--                    <span id="search_pic"></span>--}}
-{{--                </div>--}}
-            </div>
-        </div>
-    </div>
-</header>
-<nav id="nav"></nav>
 <div class="main">
 
     <div class="sidebar">
@@ -150,17 +106,10 @@
 
 
 </div>
-<div class="footer">
-    <div class="nav_footer"></div>
-    <div class="footer_down"></div>
-</div>
 
-
-
-
-
-
-
+@include('layouts.footer')
+  
+ 
 
 
 

@@ -1,114 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+@include('layouts.header')
 
-    <meta charset="UTF-8">
-    <title>صفحه اصلی دیوار</title>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+<div style="margin-left:auto;margin-right:auto;height:auto;">
+@foreach($favs as $fav)
+<div class="createShowFavorid"  >
+  <div class="advert" >
+    <span class="nameAdvert">کد آگهی: {{$fav->id}} </span>
+  </div>
+  <div class="img" >
+    <img class="showImgFavorid"  src="{{asset('images/' .$fav->image_url)}}">
+  </div>
 
-<body class="body">
+  <div class="title" >
+    <span >عنوان: {{$fav->title}}</span>
+  </div>
+  <div class="description">
+    <span >توضیحات: {{$fav->description}}</span>
+  </div>
+  <div id="PriceTell">
+    <div class="price" >
+      <span class="showPrice" >قیمت: <span style="color:red;">{{$fav->price }} </span>تومان</span>
+      <div class="tell">
+        <span class="showTell">تلفن: {{$fav->phone_number_ads}} </span>
+      </div>                
+
+    </div>           
+    
+    
+  
+  </div>
+  <div class="Address" >
+    <span >آدرس: {{$fav->address }}</span>
+  </div>
 
 
-<header class="header">
-    <div id="myheader">
-        <div id="header_right">
-            <div id="header_right_top">
-                <span id="lock"></span>
-                <a class="yekan login" href="">ورود</a>
-                <span id="register"></span>
-                <a class="yekan reg" href=""> ثبت نام کنید </a>
-            </div>
-
-
-            <div id="header_right_bottom">
-                <div id="search_top">
-                    <input class="yekan input" type="text" placeholder="محصول ، دسته یا برند مورد نظر خود را جستجو کنید ... "/>
-                    <span id="search_pic"></span>
-                </div>
-
-
-            </div>
-
-        </div>
-
+  <div class="comment"  >
+    <span class="comm_span">کامنت:</span>
+    <div class="comm_space">
+   
     </div>
-
-</header>
-<nav id="nav"></nav>
-<div id="main">
-
-
-
-    @foreach($favs as $fav)
-        <div id="create">
-            <div id="advert">
-                <span id="nameAdvert">کد آگهی: {{$fav->id}} </span>
-            </div>
-
-            <div id="img">
-                <img id="showImg" src="{{asset('images/' .$fav->image_url)}}">
-            </div>
-
-            <div id="title">
-                <span>عنوان: {{$fav->title}}</span>
-            </div>
-            <div id="description">
-                <span>توضیحات: {{$fav->description}}</span>
-            </div>
-            <div id="price">
-                <span>قیمت:{{$fav->price }} </span>
-            </div>
-            <div id="Address">
-                <span>آدرس: {{$fav->address }}</span>
-            </div>
-
-
-            <div id="comment">
-        <span id="com_span">کامنت:
-          <span style="margin-right:53px;margin-top:-30px;display:block;">
-
-          </span>
-
-
-
-        </span>
-
-                <div id="com_div">
-                    @if (empty($fav->pivot))
-                    <form method="post" action="{{route('favoriteAd',['id'=>$ad->id])}}">
-                        @csrf
-                        <input type="hidden" name="favorite" value="favorite" />
-                        <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red"></i></a>
-                    </form>
-                    @endif
+    
+                    <div id="com_div">
+                        @if (empty($fav->pivot))
+                            <form method="post" action="{{route('favoriteAd',['id'=>$fav->id])}}">
+                                @csrf
+                                <input type="hidden" name="favorite" value="favorite" />
+                                <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark-o" style="font-size:48px;color:red;margin-right:51px;margin-top:17px"></i></a>
+                            </form>
+                        @endif
                         @if (!empty($fav->pivot))
-                    <form method="post" action="{{route('favoriteAd',['id'=>$fav->id])}}">
-                        @csrf
-                        <input type="hidden" name="favorite" value="favorite" />
-                        <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark" style="font-size:48px;color:red"></i></a>
-                    </form>
-                    @endif
-                </div>
-                <div id="com_div">
-                    <a href="{{route('createComment',$fav->id)}}" class="button"><span>کامنت بگذار!</span></a>
-                </div>
-            </div>
+                        <form method="post" action="{{route('favoriteAd',['id'=>$fav->id])}}">
+                            @csrf
+                            <input type="hidden" name="favorite" value="favorite" />
+                            <a onclick="this.parentNode.submit();"><i class="fa fa-bookmark" style="font-size:48px;color:red;margin-right:51px;margin-top:17px"></i></a>
+                        </form>
+                        @endif
+                    </div>
 
 
-        </div>
+                <button class="comm_buttonFavorid">
+                    <a class="comm_button_a" href="{{route('createComment',$fav->id)}}">کامنت بگذار!</a>
+                </button>
 
-    @endforeach
-    <div id="number">
-{{--        {{ $ads->links() }}--}}
-    </div>
+
+                    
+
+
+              
+
+
 
 </div>
-<div id="nav_footer"></div>
-<div id="footer"></div>
+</div> 
+@endforeach
+
+
+                  
+
+
+</div>
+@include('layouts.footer')  
+    
+    
+  
+  
+ 
+
 
 </body>
-</html>
+
+</html>                  
+               
+           
+
+
+       
+
+    
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,4 @@
+@include('layouts.header')
 @extends('layouts.main')
 @section('content')
     @foreach($errors->all() as $error)
@@ -29,4 +30,5 @@
             <div><a href="{{route('category.index')}}">back</a></div>
             </div>
     </div>
+    @include('layouts.footer')
 @endsection

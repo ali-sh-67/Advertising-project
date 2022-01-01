@@ -1,28 +1,17 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<title>صفحه ایجاد کامنت</title>
-<script src="js/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
-</head>
-<body style="background-color: #e4dcdc;">
+@include('layouts.header')
 
 
+ @extends('layouts.main')
 
-<!-- @extends('layouts.main')
+ @section('content') 
 
-@section('content') -->
-
-    <div style="width: 711px;height:550px;border:solid 1px black;margin-right:340px;cursor:pointer;background-color:seashell;">
+    <div style="width: 711px;height:387px;border:solid 1px black;margin:35px 340px;cursor:pointer;background-color:seashell;">
         @foreach($errors->all() as $error)
             {{$error}}
         @endforeach
 
         
-        <div style="width: 515px;height:550px;margin-right:85px; ">
+        <div style="width: 515px;height:406px;margin-right:85px; ">
             <form  method="post"  action="{{route('StoreComment',$id->id)}}" >
                 @csrf
 
@@ -44,7 +33,7 @@
         </div>
 
     </div>
-<!-- @endsection -->
+@endsection
 
 </body>
 </html>

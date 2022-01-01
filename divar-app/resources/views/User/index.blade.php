@@ -1,4 +1,3 @@
-@include('layouts.header')
 <div style="width:auto;text-align:center;margin-top:105px;background-color:seashell;margin-right:150px;margin-left:150px;"> 
 
     <div class="container">
@@ -8,17 +7,14 @@
                 
                 <thead>    
                     <tr style="color:red;"> 
-                        <td>ردیف</td>           
-                        <td>کد آگهی</td>           
-                        <td>عنوان آگهی</td>                 
-                        <td>ویرایش</td>
-                        <td>حذف</td>
-                        <td>مشاهده</td>
+                        <td>id</td>           
+                        <td>name</td>           
+                        <td>email</td>                 
+                        <td>status</td>                        
                     </tr>
                 </thead>
                 <tbody>
-                    @php($i = '1')
-                    
+                    @php($i = '1')                    
                     @foreach($ads as $ad)                   
                         <tr>           
                             <td>{{$i}}</td>                  
@@ -35,11 +31,4 @@
             </table>
         </div>
     </div>
-    
-</div> 
-@include('layouts.footer') 
-</body>
-</html>
-
-
-
+</div>  

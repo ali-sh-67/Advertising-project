@@ -1,8 +1,6 @@
-@extends('layouts.main')
 
-@section('content')
+@include('layouts.header')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
 
 
 
@@ -21,10 +19,11 @@
 
                     <label class="label_ad" >انتخاب دسته بندی:</label>
                     <select class="input_Ad"  name="category">
-                        <option value="{{$id->category_id}}">{{$idCats}}</option>
-                        @foreach($cats as $cat)
-                            <option value="{{$cat->id}}">{{$cat->name}}</option>                        
-                        @endforeach            
+                    @foreach($categories as $category)
+                                @foreach($category->children as $child)
+                                    <option value="{{$child->id}}">{{$child->name}}</option>
+                                @endforeach
+                            @endforeach           
                     </select>
               
                 
@@ -51,6 +50,7 @@
                 </div>
             </form>
         </div>
+        @include('layouts.footer')
 
 
     </div>
@@ -64,4 +64,3 @@
 
 
 
-@endsection

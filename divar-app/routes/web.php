@@ -3,7 +3,11 @@
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\commentController;
+
+use App\Http\Controllers\UserController;
+
 use App\Models\ad;
+
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
@@ -16,26 +20,37 @@ Route::get('/', function () {
 });
 
 
-Route::get('/Ad/createAd', [AdsController::class, 'createAd'])->name('createAd')->middleware('auth');
-Route::post('/Ad/storeAd', [AdsController::class, 'storeAd'])->name('storeAd')->middleware('auth');
-Route::get('/Ad/pageAd', [AdsController::class, 'indexAd'])->name('indexAd')->middleware('auth');
-Route::get('/Ad/myListAd', [AdsController::class, 'myListAd'])->name('myListAd')->middleware('auth');
-Route::get('/Ad/showAd/{id}', [AdsController::class, 'showAd'])->name('showAd')->middleware('auth');
+Route::middleware(['auth'])->prefix('/Ad')->group( function () {
+Route::get('/createAd', [AdsController::class, 'createAd'])->name('createAd');
+Route::post('/storeAd', [AdsController::class, 'storeAd'])->name('storeAd');
+Route::get('/pageAd', [AdsController::class, 'indexAd'])->name('indexAd');
+Route::get('/myListAd', [AdsController::class, 'myListAd'])->name('myListAd');
+Route::get('/showAd/{id}', [AdsController::class, 'showAd'])->name('showAd');
+Route::get('/deleteAd/{id}',[AdsController::class, 'deleteAd'])->name('deleteAd');
+Route::get('/editAd/{id}',[AdsController::class, 'editAd'])->name('editAd');
+Route::post('/updateAd/{id}',[AdsController::class, 'updateAd'])->name('updateAd');
+Route::post('/favoriteAd/{id}',[AdsController::class, 'favoriteAd'])->name('favoriteAd');
+Route::post('/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name('showfavoriteAd');
+Route::get('/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('allfavoriteAd');
+Route::get('/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
+Route::get('/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
+});
 
-Route::get('/Ad/deleteAd/{id}',[AdsController::class, 'deleteAd'])->name('deleteAd')->middleware('auth');
-Route::get('/Ad/editAd/{id}',[AdsController::class, 'editAd'])->name('editAd')->middleware('auth');
-Route::post('/Ad/updateAd/{id}',[AdsController::class, 'updateAd'])->name('updateAd')->middleware('auth');
 
 
-Route::post('/Ad/favoriteAd/{id}',[AdsController::class, 'favoriteAd'])->name('favoriteAd')->middleware('auth');
-Route::post('/Ad/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name('showfavoriteAd')->middleware('auth');
 
-Route::get('/Ad/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('allfavoriteAd')->middleware('auth');
 
-Route::get('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
-Route::get('/Ad/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
+
+
+
+
+
+
+
+
 
 Route::post('/Ad/search',[AdsController::class,'search'])->name('search');
+
 
 Route::get('/Comment/create/{id}',[commentController::class, 'createComment'])->name('createComment')->middleware('auth');
 Route::post('/Comment/store/{id}',[commentController::class, 'StoreComment'])->name('StoreComment');
@@ -51,4 +66,8 @@ Route::middleware(['auth'])->prefix('/category')->group( function () {
     Route::post('/store', [categoryController::class, 'store'])->name('category.store');
     Route::get('/delete/{id}', [categoryController::class, 'destroy'])->name('category.delete');
 });
+
+Route::get('/home/{user}', [UserController::class, 'edit'])->name('UserEdit');
+Route::post('/home/update/{user}', [UserController::class, 'update'])->name('UserUpdate');
+
 Auth::routes();
