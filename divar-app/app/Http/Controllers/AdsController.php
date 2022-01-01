@@ -176,7 +176,7 @@ class AdsController extends Controller
         $allads = ad::all();
         return view('Ad/allfavoriteAd', compact('allfavs', 'allads','count'));
     }
-
+   ///////////////////////////////////////////////////////////////////////////////////////////////
     public function search()
     {
         $search=request('search');
