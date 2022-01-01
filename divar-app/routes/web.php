@@ -3,6 +3,7 @@
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\commentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -46,4 +47,8 @@ Route::middleware(['auth'])->prefix('/category')->group( function () {
     Route::post('/store', [categoryController::class, 'store'])->name('category.store');
     Route::get('/delete/{id}', [categoryController::class, 'destroy'])->name('category.delete');
 });
+
+Route::get('/home/{user}', [UserController::class, 'edit'])->name('UserEdit');
+Route::post('/home/update/{user}', [UserController::class, 'update'])->name('UserUpdate');
+
 Auth::routes();
