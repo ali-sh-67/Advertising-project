@@ -1,6 +1,9 @@
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @extends('layouts.main')
 @section('content')
-    <link rel="stylesheet" href="{{asset('css/category/index.css')}}">
+    
     <div class="categories_list">
 
         @if(isset($message_delete))
@@ -9,21 +12,21 @@
         @foreach ($categories as $category)
             <div class="category">
                 <div class="name"><a href="{{route('parentCategoryAds',['id'=>$category->id])}}"><i class="{{$category->icon}}" aria-hidden="true"></i> {{$category->name}}</a></div>
-                @if(Auth::user()->name=='admin' & Auth::user()->email=='admin@gmail.com')
-                    <div class="create"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
-                    <div class="edit"><a href="{{route('category.edit',['id'=>$category->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-                    <div class="delete"><a href="{{route('category.delete',['id'=>$category->id])}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                @if(Auth::user()->status=='Admin')
+                    <div class="createIndex"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" style="font-size:25px;margin-right:10px;" aria-hidden="true"></i></a></div>
+                    <div class="edit"><a href="{{route('category.edit',['id'=>$category->id])}}"><i class="fa fa-pencil-square-o" style="font-size:25px;margin-right:10px;" aria-hidden="true"></i></a></div>
+                    <div class="delete"><a href="{{route('category.delete',['id'=>$category->id])}}"><i class="fa fa-trash-o" style="font-size:25px;margin-right:10px;" aria-hidden="true"></i></a></div>
                 @endif
             </div>
             <div>
                 @foreach ($category->children as $child)
                     <div class="child">
                         <div class="name"><a href="{{route('categoryAds',['id'=>$child->id])}}"><i class="{{$child->icon}}" aria-hidden="true"></i> {{$child->name}}</a></div>
-                        @if(Auth::user()->name=='admin' && Auth::user()->email=='admin@gmail.com')
-                            <div class="create"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
-                            <div class="edit"><a href="{{route('category.edit',['id'=>$child->id])}}"><i class="fa fa-pencil-square-o"
+                        @if(Auth::user()->status=='Admin')
+                            <div class="createIndex"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" style="font-size:20px;margin-right:10px;" aria-hidden="true"></i></a></div>
+                            <div class="edit"><a href="{{route('category.edit',['id'=>$child->id])}}"><i class="fa fa-pencil-square-o" style="font-size:20px;margin-right:10px;"
                                         aria-hidden="true"></i></a></div>
-                            <div class="delete"><a href="{{route('category.delete',['id'=>$child->id])}}"><i class="fa fa-trash-o"
+                            <div class="delete"><a href="{{route('category.delete',['id'=>$child->id])}}"><i class="fa fa-trash-o" style="font-size:20px;margin-right:10px;"
                                         aria-hidden="true"></i></a>
                             </div>
                         @endif
@@ -32,8 +35,8 @@
                         @foreach ($child->children as $subchild)
                             <div class="subchild">
                                 <div class="name"><a href=""><i class="{{$subchild->icon}}" aria-hidden="true"></i> {{$subchild->name}}</a></div>
-                                @if(Auth::user()->name=='admin' && Auth::user()->email=='admin@gmail.com')
-                                    <div class="create"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
+                                @if(Auth::user()->status=='Admin')
+                                    <div class="createIndex"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
                                     <div class="edit"><a href="{{route('category.edit',['id'=>$subchild->id])}}"><i
                                                 class="fa fa-pencil-square-o"
                                                 aria-hidden="true"></i></a></div>
@@ -46,9 +49,9 @@
                                 @foreach ($subchild->children as $sub1child)
                                     <div class="sub1child">
                                         <div class="name"><a href=""><i class="{{$sub1child->icon}}" aria-hidden="true"></i> {{$sub1child->name}}</a></div>
-                                        @if(Auth::user()->name=='admin' && Auth::user()->email=='admin@gmail.com')
+                                        @if(Auth::user()->status=='Admin')
 
-                                            <div class="create"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
+                                            <div class="createIndex"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
                                             <div class="edit"><a href="{{route('category.edit',['id'=>$sub1child->id])}}"><i
                                                         class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
                                             <div class="delete"><a href="{{route('category.delete',['id'=>$sub1child->id])}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
@@ -60,7 +63,7 @@
                                             <div class="sub2child">
                                                 <div class="name"><a href=""><i class="{{$sub2child->icon}}"
                                                             aria-hidden="true"></i> {{$sub2child->name}}</a></div>
-                                                @if(Auth::user()->name=='admin' && Auth::user()->email=='admin@gmail.com')
+                                                @if(Auth::user()->status=='Admin')
                                                     <div class="create"><a href="{{route('category.create',['id'=>$category->id])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
                                                     <div class="edit"><a href="{{route('category.edit',['id'=>$sub2child->id])}}"><i
                                                                 class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
@@ -78,4 +81,5 @@
             </div>
         @endforeach
     </div>
+    @include('layouts.footer')
 @endsection
