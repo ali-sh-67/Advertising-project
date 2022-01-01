@@ -5,6 +5,7 @@
 @section('content')
     
     <div class="categories_list">
+    <div style="text-align:center;height:30px;margin-top:20px;"><a style="text-decoration:none" href="{{route('indexAd')}}">مشاهده همه آگهی ها</a></div>
 
         @if(isset($message_delete))
             {{$message_delete}}
@@ -80,6 +81,7 @@
                 @endforeach
             </div>
         @endforeach
+        
     </div>
     @include('layouts.footer')
 @endsection
