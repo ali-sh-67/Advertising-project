@@ -14,19 +14,19 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->prefix('/Ad')->group( function () {
-Route::get('/Ad/createAd', [AdsController::class, 'createAd'])->name('createAd');
-Route::post('/Ad/storeAd', [AdsController::class, 'storeAd'])->name('storeAd');
-Route::get('/Ad/pageAd', [AdsController::class, 'indexAd'])->name('indexAd');
-Route::get('/Ad/myListAd', [AdsController::class, 'myListAd'])->name('myListAd');
-Route::get('/Ad/showAd/{id}', [AdsController::class, 'showAd'])->name('showAd');
-Route::get('/Ad/deleteAd/{id}',[AdsController::class, 'deleteAd'])->name('deleteAd');
-Route::get('/Ad/editAd/{id}',[AdsController::class, 'editAd'])->name('editAd');
-Route::post('/Ad/updateAd/{id}',[AdsController::class, 'updateAd'])->name('updateAd');
-Route::post('/Ad/favoriteAd/{id}',[AdsController::class, 'favoriteAd'])->name('favoriteAd');
-Route::post('/Ad/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name('showfavoriteAd');
-Route::get('/Ad/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('allfavoriteAd');
-Route::get('/Ad/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
-Route::get('/Ad/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
+Route::get('/createAd', [AdsController::class, 'createAd'])->name('createAd');
+Route::post('/storeAd', [AdsController::class, 'storeAd'])->name('storeAd');
+Route::get('/pageAd', [AdsController::class, 'indexAd'])->name('indexAd');
+Route::get('/myListAd', [AdsController::class, 'myListAd'])->name('myListAd');
+Route::get('/showAd/{id}', [AdsController::class, 'showAd'])->name('showAd');
+Route::get('/deleteAd/{id}',[AdsController::class, 'deleteAd'])->name('deleteAd');
+Route::get('/editAd/{id}',[AdsController::class, 'editAd'])->name('editAd');
+Route::post('/updateAd/{id}',[AdsController::class, 'updateAd'])->name('updateAd');
+Route::post('/favoriteAd/{id}',[AdsController::class, 'favoriteAd'])->name('favoriteAd');
+Route::post('/showfavoriteAd',[AdsController::class, 'showfavoriteAd'])->name('showfavoriteAd');
+Route::get('/allfavoriteAd',[AdsController::class, 'allfavoriteAd'])->name('allfavoriteAd');
+Route::get('/categoryAds/{id}', [AdsController::class, 'categoryAds'])->name('categoryAds');
+Route::get('/parentCategoryAds/{id}', [AdsController::class, 'parentCategoryAds'])->name('parentCategoryAds');
 });
 
 Route::get('/Comment/create/{id}',[commentController::class, 'createComment'])->name('createComment')->middleware('auth');
