@@ -1,7 +1,9 @@
+
+@include('layouts.header')
 @extends('layouts.main')
 
 @section('content')
-    <link rel="stylesheet" href="{{asset('css\category\create.css')}}">
+    
     <div id="cat_main">
         @foreach($errors->all() as $error)
             {{$error}}
@@ -55,4 +57,5 @@
             </form>
         </div>
     </div>
+    @include('layouts.footer')  
 @endsection
