@@ -104,6 +104,7 @@
 
 
 </div>
+
 @include('layouts.footer')
   
  
