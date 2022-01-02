@@ -29,7 +29,7 @@ class AdsController extends Controller
     {
         $online = Auth::user()->status;
         $ads = DB::table('Ads')->orderBy('id', 'Desc')->paginate(10);
-        $Uads =DB::table('Ads')->orderBy('id', 'Desc')->where('user_id','=','3')->cursorpaginate(10);
+        $Uads =DB::table('Ads')->orderBy('id', 'Desc')->where('user_id','=',auth()->user()->id)->cursorpaginate(10);
         $count = DB::table('Ads')->orderBy('id', 'Desc')->count();
         return view('Ad.myListAd', compact('ads', 'count','Uads','online'));
     }
