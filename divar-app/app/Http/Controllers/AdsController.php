@@ -27,10 +27,11 @@ class AdsController extends Controller
 
     public function myListAd(Request $request)
     {
-
+        $online = Auth::user()->status;
         $ads = DB::table('Ads')->orderBy('id', 'Desc')->paginate(10);
+        $Uads =DB::table('Ads')->orderBy('id', 'Desc')->where('user_id','=','3')->cursorpaginate(10);
         $count = DB::table('Ads')->orderBy('id', 'Desc')->count();
-        return view('Ad.myListAd', compact('ads', 'count'));
+        return view('Ad.myListAd', compact('ads', 'count','Uads','online'));
     }
 
     public function createAd()
@@ -124,13 +125,9 @@ class AdsController extends Controller
     {
         $users = DB::table('users')->get();
         $user = User::find(Auth::user()->id);
-        //    $user->ads()->attach($ad,['favorite'=>'favorite']);
         $user->ads()->toggle([$id => ['favorite' => 'favorite']]);
-        //    $user->ads()->updateExistingPivot($id,['favorite'=> 'favorite']);
         $ads = DB::table('Ads')->orderBy('id', 'Desc')->paginate(5);
         $comms = comment::all();
-        // $fav=User::find($user->id)->ads()->wherePivot('favorite','favorite')->get();
-//        $favs=User::find(Auth::user()->id)->ads()->wherePivot('favorite','favorite')->get();
         $favs = User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
         return view('Ad.pageAd', compact('favs', 'ads', 'comms', 'users'));
     }
@@ -139,9 +136,10 @@ class AdsController extends Controller
 
     public function showfavoriteAd(Request $request)
     {
+        $users = DB::table('users')->get();
+        $comms = comment::all();
         $favs = User::find(Auth::user()->id)->ads()->wherePivot('favorite', 'favorite')->get();
-//            $favs=User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
-        return view('Ad.showfavorite', ['favs' => $favs]);
+        return view('Ad.showfavorite',compact('favs','comms','users'));
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,19 +171,23 @@ class AdsController extends Controller
     //////////////////////////////////////////////////////////////////////////////////////////////
     public function allfavoriteAd(Request $request)
     {
+        $favs = User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
+        $users = DB::table('users')->get();
+        $comms = comment::all();
         $count = DB::table('ads')->groupBy('user_id')->selectRaw('*')->count();
         $allfavs = DB::table('user_ad')->groupBy('ad_id')->selectRaw('count(*) as total,ad_id')
             ->orderBy('total', 'desc')->get()->toArray();
         $allads = ad::all();
-        return view('Ad/allfavoriteAd', compact('allfavs', 'allads','count'));
+        return view('Ad/allfavoriteAd', compact('allfavs', 'allads','count','users','comms','favs'));
     }
    ///////////////////////////////////////////////////////////////////////////////////////////////
     public function search()
     {
+        $users = DB::table('users')->get();
         $search=request('search');
         $ads=DB::table('ads')->orderBy('id', 'Desc')->where('title','like','%' .$search.'%')->orwhere('description','like','%' .$search.'%')->paginate(5);
         $comms = comment::all();
         $favs = User::find(Auth::user()->id)->ads()->get()->pluck('pivot.ad_id')->toArray();
-        return view('Ad.pageAd', compact('ads', 'comms', 'favs'));
+        return view('Ad.pageAd', compact('ads', 'comms', 'favs','users'));
     }
 }

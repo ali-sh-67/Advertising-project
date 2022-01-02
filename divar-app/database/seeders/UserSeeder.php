@@ -13,10 +13,11 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-   
+
         public function run()
         {
             DB::table('users')->insert([
+                [
                 'id'=>1,
                 'name' => 'javad',
                 'email' => 'javad@gmail.com',
@@ -41,8 +42,72 @@ class UserSeeder extends Seeder
                 'email' => 'sara@gmail.com',
                 'password' => Hash::make('password'),
                 'status' =>'User',
-           
+
+            ],[
+                    'id'=>5,
+                    'name' => 'ali',
+                    'email' => 'ali@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>6,
+                    'name' => 'akbar',
+                    'email' => 'akbar@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>7,
+                    'name' => 'arash',
+                    'email' => 'arash@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>8,
+                    'name' => 'sajad',
+                    'email' => 'sajad@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>9,
+                    'name' => 'majid',
+                    'email' => 'malid@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>10,
+                    'name' => 'susan',
+                    'email' => 'susan@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>11,
+                    'name' => 'aria',
+                    'email' => 'aria@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>12,
+                    'name' => 'arad',
+                    'email' => 'arad@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ],[
+                    'id'=>13,
+                    'name' => 'roya',
+                    'email' => 'roya@gmail.com',
+                    'password' => Hash::make('password'),
+                    'status' =>'User',
+
+                ]
             ]);
         }
-   
+
 }

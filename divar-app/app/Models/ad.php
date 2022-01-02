@@ -26,7 +26,7 @@ class ad extends Model
     {
         return $this->belongsTo(Category::class,'category_id','id');
     }
-    
+
     public function User()
     {
         return $this->belongsTo(User::class, 'user_id','id');

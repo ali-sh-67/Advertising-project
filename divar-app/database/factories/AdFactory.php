@@ -17,6 +17,7 @@ class AdFactory extends Factory
     public function definition()
     {
         return [
+            'user_id'=> rand(1,13),
             'category_id' => rand(11, 83),
             'title' => $this->faker->title,
             'description' => $this->faker->text(200),

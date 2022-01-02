@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\ad;
 //use App\Models\User;
 //use App\Models\comment;
+use App\Models\comment;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -17,10 +19,12 @@ class AdSeeder extends Seeder
      */
     public function run()
     {
-        ad::factory()
-            ->count(5)
-            ->forUser()
-//            ->forComment()
+//        $User=User::factory()->create();
+//$comment=comment::factory()->create();
+       $ad= ad::factory()
+            ->count(50)
+//            ->for($User)
+//            ->has($comment)
             ->create();
 
     }
